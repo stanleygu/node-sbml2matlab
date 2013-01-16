@@ -1,0 +1,3 @@
+[submodule "server/sbml2matlab"]
+	path = server/sbml2matlab
+	url = git@github.com:stanley-gu/sbml2matlab

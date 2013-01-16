@@ -1,0 +1,6 @@
+*.c9revisions*
+*.swp
+*.settings
+*node_modules*
+*~
+*.DS_Store
