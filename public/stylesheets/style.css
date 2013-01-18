@@ -1,16 +1,17 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px"Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
 }
-
 #accordion {
-    height:500px;
+  height:500px;
+}
+#accordion .ui-accordion-content {
+  padding: 0;
 }
 .ace_editor {
-    width:600px;
-    height:500px;
+  width:600px;
+  height:500px;
 }
