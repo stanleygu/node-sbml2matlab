@@ -22,20 +22,30 @@ $(document).ready(function() {
     var editor2 = ace.edit("editor2");
     editor1.getSession().setMode("ace/mode/xml");
     editor2.getSession().setMode("ace/mode/xml");
-
+    
+    
+    
     $("#accordion").accordion({
         fillSpace: true,
         change: function() {
             $(editor1).resize();
+            $('div#editor2').width($('div#pane2').width());
             $(editor2).resize();
             if ($('#accordion').accordion('option', 'active') == 1) {
-                console.log('translate now!');
-
+                
                 translate(editor1.getValue(), editor2);
 
             }
         }
     });
+    $('div#editor1').width($('div#pane1').width());
+    editor1.resize();
+    $(window).resize(function() {
+        $('div#editor1').width($('div#pane1').width());
+        $('div#editor2').width($('div#pane2').width());
+        editor1.resize();
+        editor2.resize();
+    })
 
 });
 
