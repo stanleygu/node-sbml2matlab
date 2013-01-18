@@ -24,9 +24,9 @@ $(document).ready(function() {
     editor2.getSession().setMode("ace/mode/xml");
     
     
-    
     $("#accordion").accordion({
         fillSpace: true,
+        heightStyle: 'fill',
         change: function() {
             $(editor1).resize();
             $('div#editor2').width($('div#pane2').width());
@@ -38,11 +38,16 @@ $(document).ready(function() {
             }
         }
     });
+    $('div#accordionContainer').height($(window).height());
     $('div#editor1').width($('div#pane1').width());
+    $('div#editor1').height($('div#pane1').height());
     editor1.resize();
     $(window).resize(function() {
+        $('div#accordionContainer').height($(window).height());
         $('div#editor1').width($('div#pane1').width());
+        $('div#editor1').height($('div#pane1').height());
         $('div#editor2').width($('div#pane2').width());
+        $('div#editor2').height($('div#pane2').height());
         editor1.resize();
         editor2.resize();
     })
