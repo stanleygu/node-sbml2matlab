@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p The online SBML to MATLAB Translator
+
+  #accordion
+    h2
+      a(href='#') Input SBML
+    div
+      #editor1(position='relative')
+    h2 
+      a(href='#') Translate to MATLAB
+    div
+      #editor2
+  

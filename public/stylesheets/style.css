@@ -1,0 +1,16 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#accordion {
+    height:650px;
+}
+.ace_editor {
+    width:600px;
+    height:500px;
+}
