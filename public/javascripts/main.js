@@ -22,8 +22,8 @@ $(document).ready(function() {
   var editor2 = ace.edit("editor2");
   editor1.getSession().setMode("ace/mode/xml");
   editor2.getSession().setMode("ace/mode/xml");
-  editor1.setTheme("ace/theme/github");
-  editor2.setTheme("ace/theme/github");
+  editor1.setTheme("ace/theme/solarized_light");
+  editor2.setTheme("ace/theme/solarized_light");
 
   $("#accordion").accordion({
     fillSpace: true,
