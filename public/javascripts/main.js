@@ -4,6 +4,9 @@ $(document).ready(function() {
 
   $('div#about').fadeToggle(0);
 
+  // making tabs  
+  $('div#pane0').tabs();
+
   var editor1 = ace.edit("editor1");
   var editor2 = ace.edit("editor2");
   editor1.getSession().setMode("ace/mode/xml");
@@ -35,21 +38,60 @@ $(document).ready(function() {
 
   var fadeDuration = 400;
 
-
   $('li#home, li#about').click(function(){
     $('li#home').toggleClass('active');
     $('li#about').toggleClass('active');
     $('div#app').slideToggle(fadeDuration);
     $('div#about').fadeToggle(fadeDuration);
-
   })
+
+  // file upload
+  $(':file').change(function(){
+    var file = this.files[0];
+    name = file.name;
+    size = file.size;
+    type = file.type;
+    //your validation
+  });
+  $(':button#upload').click(function(){
+    var formData = new FormData($('form')[0]);
+    window.myObj = $.ajax({
+        url: '/upload',  //server script to process data
+        type: 'POST',
+        // xhr: function() {  // custom xhr
+        //     myXhr = $.ajaxSettings.xhr();
+        //     if(myXhr.upload){ // check if upload property exists
+        //         myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // for handling the progress of the upload
+        //     }
+        //     return myXhr;
+        // },
+        //Ajax events
+        //beforeSend: beforeSendHandler,
+        success: function(data, textStatus, jqXHR) {
+          console.log(data)
+          editor1.setValue(data);
+        },
+        error: function(data) {console.log('failed to upload file:' + data)},
+        // Form data
+        data: formData,
+        //Options to tell JQuery not to process data or worry about content-type
+        cache: false,
+        contentType: false,
+        processData: false
+    });
 });
 
 
+});
+
+var progressHandlingFunction = function() {
+  console.log('upload in progress')
+}
+
 var resize = function(editor1, editor2) {
   //$('div#accordionContainer').height($(window).height());
-  $('div#editor1').width($('div#pane1').width());
-  $('div#editor1').height($('div#pane1').height());
+  $('div#editor1').width($('div#pane0').width());
+  $('div#editor1').height($('div#pane0').height());
   $('div#editor2').width($('div#pane2').width());
   $('div#editor2').height($('div#pane2').height());
   editor1.resize();

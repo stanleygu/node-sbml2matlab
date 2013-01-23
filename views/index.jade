@@ -9,13 +9,30 @@ block content
     #accordionContainer  
       #accordion
         h2
-          a(href='#') Input SBML (paste your SBML model below)
-        #pane1
-          #editor1
+          a(href='#') Input SBML
+        #pane0
+          ul
+            li
+              a(href='#pane1') Paste SBML
+            li
+              a(href='#tab2') Upload SBML
+            li
+              a(href='#tab3') Enter URL
+          #tab2
+            br
+            form(enctype="multipart/form-data")
+              input(type='file', name='file')
+              input(type='button', id='upload', value='Submit')
+          #tab3
+            br
+            p Paste URL to your SBML file here... eventually
+          #pane1
+            #editor1
         h2 
           a(href='#') Translate to MATLAB
         #pane2
           #editor2
+
 
   div#about 
     h2 What is sbml2matlab?
