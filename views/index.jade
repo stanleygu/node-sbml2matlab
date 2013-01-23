@@ -2,10 +2,10 @@ extends layout
 
 block content
   script(type='text/javascript', src='/javascripts/main.js')
-  div
+  <a href="https://github.com/stanley-gu/node-sbml2matlab" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+  div#app
     br
     p The online SBML to MATLAB Translator
-    <a href="https://github.com/stanley-gu/node-sbml2matlab" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     #accordionContainer  
       #accordion
         h2
@@ -16,4 +16,25 @@ block content
           a(href='#') Translate to MATLAB
         #pane2
           #editor2
-    
+
+  div#about 
+    h2 What is sbml2matlab?
+    :markdown
+      `sbml2matlab` is a Systems Biology Markup Language (SBML) to MATLAB function converter. It is lightweight and written in C! 
+
+      This webapp showcases `sbml2matlab`, which runs the SBML conversion on a [node.js](http://nodejs.org/) server. 
+
+      You can find `sbml2matlab` source [here](https://github.com/stanley-gu/sbml2matlab) and the source for this website [here](https://github.com/stanley-gu/node-sbml2matlab).
+
+    h2 What versions of SBML are supported?
+    :markdown
+      Conversion of SBML documents up to Level 2 Version 4 are supported. However, events and algebraic rules are not supported.
+
+    h2 Need a model?
+    :markdown
+      You can find many curated models in the [BioModels Repository](http://www.ebi.ac.uk/biomodels-main/)
+
+    h2 Error in your translation?
+    :markdown
+      Please note the issue [on github](https://github.com/stanley-gu/sbml2matlab/issues)!
+

@@ -29,7 +29,7 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/about', routes.about);
+//app.get('/about', routes.about);
 app.get('/users', user.list);
 app.post('/sbml2matlab', sbml2matlab.translate)
 
