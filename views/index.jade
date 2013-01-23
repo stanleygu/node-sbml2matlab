@@ -16,16 +16,11 @@ block content
               a(href='#pane1') Paste SBML
             li
               a(href='#tab2') Upload SBML
-            li
-              a(href='#tab3') Enter URL
           #tab2
             br
             form(enctype="multipart/form-data")
               input(type='file', name='file')
               input(type='button', id='upload', value='Submit')
-          #tab3
-            br
-            p Paste URL to your SBML file here... eventually
           #pane1
             #editor1
         h2 
@@ -37,21 +32,21 @@ block content
   div#about 
     h2 What is sbml2matlab?
     :markdown
-      `sbml2matlab` is a Systems Biology Markup Language (SBML) to MATLAB function converter. It is lightweight and written in C! 
+      `sbml2matlab` is a Systems Biology Markup Language (SBML) to MATLAB function converter. It is lightweight and written in C.
 
-      This webapp showcases `sbml2matlab`, which runs the SBML conversion on a [node.js](http://nodejs.org/) server. 
+      This webapp contains a running instance of `sbml2matlab`, which runs the SBML conversion on a [node.js](http://nodejs.org/) server. 
 
       You can find `sbml2matlab` source [here](https://github.com/stanley-gu/sbml2matlab) and the source for this website [here](https://github.com/stanley-gu/node-sbml2matlab).
 
-    h2 What versions of SBML are supported?
+    h2 What are Limitations of the Translations?
     :markdown
-      Conversion of SBML documents up to Level 2 Version 4 are supported. However, events and algebraic rules are not supported.
+      Events and algebraic rules are not supported. Further details may be found [here](http://code.google.com/p/sbwtools/wiki/CurrentValidation).
 
     h2 Need a model?
     :markdown
-      You can find many curated models in the [BioModels Repository](http://www.ebi.ac.uk/biomodels-main/)
+      You can find many curated models in the [BioModels Repository](http://www.ebi.ac.uk/biomodels-main/).
 
     h2 Error in your translation?
     :markdown
-      Please note the issue [on github](https://github.com/stanley-gu/sbml2matlab/issues)!
+      Please note the issue [on github](https://github.com/stanley-gu/sbml2matlab/issues).
 
