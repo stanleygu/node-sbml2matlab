@@ -119,7 +119,7 @@ var translate = function(sbml, editor) {
         var buttonId = 'downloadButton';
         if (!($('button#'+buttonId).length > 0)) {
           var downloadButton = $(document.createElement('button'));
-          $('body').append(downloadButton);
+          $('div#app').append(downloadButton);
           downloadButton.attr('id', buttonId);
           downloadButton.append('Download translated .m File');
           downloadButton.click(downloadMFile);
