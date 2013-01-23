@@ -20,7 +20,11 @@ $(document).ready(function() {
     change: function() {
       resize(editor1, editor2);
       if ($('#accordion').accordion('option', 'active') == 1) {
+
+        
+
         translate(editor1.getValue(), editor2);
+
       }
     }
   });
@@ -52,8 +56,7 @@ $(document).ready(function() {
     size = file.size;
     type = file.type;
     //your validation
-  });
-  $(':button#upload').click(function(){
+
     var formData = new FormData($('form')[0]);
     window.myObj = $.ajax({
         url: '/upload',  //server script to process data
@@ -79,8 +82,8 @@ $(document).ready(function() {
         contentType: false,
         processData: false
     });
-});
 
+  });
 
 });
 
@@ -112,6 +115,15 @@ var translate = function(sbml, editor) {
       type: "POST",
       success: function(data, textStatus, jqXHR) {
         editor.setValue(data);
+
+        var buttonId = 'downloadButton';
+        if (!($('button#'+buttonId).length > 0)) {
+          var downloadButton = $(document.createElement('button'));
+          $('body').append(downloadButton);
+          downloadButton.attr('id', buttonId);
+          downloadButton.append('Download translated .m File');
+          downloadButton.click(downloadMFile);
+        }
         return data;
       }
     });
@@ -120,3 +132,32 @@ var translate = function(sbml, editor) {
     editor.setValue("Something went wrong: " + error);
   }
 };
+
+
+
+var downloadMFile = function() {
+  try {
+    var xmlRequest = $.ajax({
+      url:"download",
+      type:"GET",
+      success:downloadURL('./download')
+    })
+  }
+  catch (error) {
+    throw error;
+  }
+}
+
+var downloadURL = function downloadURL(url) {
+    var hiddenIFrameID = 'hiddenDownloader',
+        iframe = document.getElementById(hiddenIFrameID);
+    if (iframe === null) {
+        iframe = document.createElement('iframe');
+        iframe.id = hiddenIFrameID;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+    }
+    iframe.src = url;
+};
+
+

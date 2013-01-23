@@ -9,7 +9,8 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , sbml2matlab = require('./routes/sbml2matlab');
+  , sbml2matlab = require('./routes/sbml2matlab')
+  , download = require('./routes/download');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.get('/', routes.index);
 app.post('/upload', upload.uploadSbml);
 app.get('/users', user.list);
 app.post('/sbml2matlab', sbml2matlab.translate)
+app.get('/download', download.downloadM);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

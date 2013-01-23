@@ -56,10 +56,22 @@ exports.translate = function (req, res) {
 
 //    child = exec(command, options, function (error, stdout, stderr) {
 
-    child = exec(command, function (error, stdout, stderr) {
+    // child = exec(command, function (error, stdout, stderr) {
+
+    child = exec(command + ' -output output.m', function (error, stdout, stderr) {
 
         //child = exec('pwd', function (error, stdout, stderr) {
-        res.send(stdout + stderr);
+        //res.set('body',stdout)
+        res.download('./sbml2matlab/install/output.m', function(err){
+            if (err){
+                console.log(err)
+            } else {
+                res.end();
+                console.log('downloaded output.m')
+            }
+        });
+
+        //res.send(stdout);
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
         if (error !== null) {
@@ -68,6 +80,14 @@ exports.translate = function (req, res) {
         fs.unlink('./sbml2matlab/install/tmp.sbml', function (err){
             if (err) throw err;
         })
-
     });
+
+    // child = exec(command + ' -output output.m', function (error, stdout, stderr) {
+    //     res.download('output.m')
+    //     console.log('stdout: ' + stdout);
+    //     console.log('stderr: ' + stderr);
+    //     if (error !== null) {
+    //         console.log('exec error: ' + error);
+    //     }
+    // });
 };
